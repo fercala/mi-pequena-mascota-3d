@@ -1,0 +1,57 @@
+/* Care activities and animated actor, layered over the existing storybook house. */
+.pet-position{position:absolute;left:49%;bottom:16%;width:24%;transform:translateX(-50%);z-index:3;transition:left var(--walk-time,1800ms) ease-in-out,bottom var(--walk-time,1800ms) ease-in-out;transform-origin:50% 100%}
+.pet-position.stage-0{width:20%}.pet-position.stage-2{width:26%}.pet-position.stage-3{width:28%}
+.pet-position>.scene-pet{position:relative;left:auto;bottom:auto;transform:none;width:100%;min-height:72px;display:block}
+.pet-position>.scene-pet:active{transform:scale(.96)}
+.pet-position .scene-pet.happy{animation:none}.pet-position .scene-pet.love{animation:local-bounce .7s ease 2}.pet-position .scene-pet.play,.pet-position .scene-pet.clean{animation:local-wiggle .6s ease 2}.pet-position .scene-pet.eat{animation:local-nibble .5s ease 3}.pet-position .scene-pet.sleep{animation:local-breathe 2s ease-in-out infinite}
+.pet-position .pet-body{transform-origin:110px 207px;animation:body-breathe 4s ease-in-out infinite}
+.pet-tail{transform-origin:156px 184px;animation:tail-wave 6s ease-in-out infinite}
+.pet-position[data-pose="walk"] .scene-pet{animation:walk-bob .4s ease-in-out infinite}
+.pet-position[data-pose="walk"] .left-foot{transform-origin:72px 201px;animation:step-left .4s ease-in-out infinite}
+.pet-position[data-pose="walk"] .right-foot{transform-origin:146px 201px;animation:step-left .4s ease-in-out infinite reverse}
+.pet-position[data-pose="stretch"] .pet-body{animation:stretch-body 2.3s ease-in-out both}
+.pet-position[data-pose="stretch"] .pet-arms{transform-origin:110px 150px;animation:stretch-arms 2.3s ease-in-out both}
+.pet-position[data-pose="look"] .pet-head{animation:look-around 2.3s ease-in-out both;transform-origin:110px 115px}
+.mood-hungry .pet-eyes{translate:5px 2px}.mood-hungry .pet-head{animation:sniff 3s ease-in-out infinite;transform-origin:110px 130px}
+.pet-yawn{transform-origin:111px 122px;animation:yawn 6s ease-in-out infinite}
+.pet-chew{transform-origin:111px 122px;animation:chew .2s ease-in-out infinite}
+.scene-paused *{animation-play-state:paused!important}.scene-paused .pet-position{transition:none}
+button.hint-bubble{cursor:pointer;padding:0;border:1px solid #fff8e0;min-width:54px;min-height:50px;transition:left 1.8s ease-in-out;animation:float 3s ease-in-out infinite}
+.feeding-stage{height:300px;position:relative;background:linear-gradient(#f5dfb8 0 72%,#e4c59b 72%);border-radius:25px;overflow:hidden;margin:20px 0 14px}
+.feeding-stage::before{content:"";position:absolute;left:10%;right:10%;bottom:24px;height:24px;border-radius:50%;background:#bda17d33}
+.feeding-pet{position:absolute;width:220px;height:265px;left:calc(50% - 110px);top:12px;pointer-events:none}
+.feeding-pet .pet-art{width:100%;height:100%;overflow:visible}
+.food-dish{position:absolute;bottom:-6px;left:calc(50% - 42px);width:84px;height:84px;border-radius:50%;background:#fff6df;box-shadow:0 4px 0 #b9937155;padding:12px}
+.mouth-target{position:absolute;left:calc(50% - 27px);top:140px;width:54px;height:54px;border-radius:50%;background:#fff7db33;border:3px dashed #fffce6;display:grid;place-items:center;color:#b38360;z-index:3;animation:target-glow 1.8s infinite}
+.mouth-target svg{width:24px;height:24px;opacity:.45}.mouth-target:disabled{visibility:hidden}
+.feeding-stage:has(.age-1) .mouth-target{top:127px}.feeding-stage:has(.age-2) .mouth-target{top:105px}.feeding-stage:has(.age-3) .mouth-target{top:93px}
+.flying-bite{position:absolute;bottom:30px;left:calc(50% - 27px);width:54px;height:54px;pointer-events:none;animation:bite-flight .7s ease-in both;z-index:4}
+.bite-progress{display:flex;justify-content:center;gap:12px}.bite-progress span{width:37px;height:37px;border-radius:50%;background:#f0e5d2;color:#c2aa89;display:grid;place-items:center}.bite-progress span.done{background:#dfead5;color:#7c976d}.bite-progress svg{width:21px;height:21px}.spoon-button span{font-size:27px}
+.bath-playground{position:relative;height:290px;background:linear-gradient(#d9e9e2 0 80%,#bfd8ce 80%);border:1px solid #bed6c8;border-radius:25px;overflow:hidden;margin:20px 0 10px}
+.bath-playground::before{content:"";position:absolute;left:15%;right:15%;bottom:13px;height:26px;background:#8cad9c26;border-radius:50%}
+.bath-body{position:absolute;width:236px;height:280px;left:calc(50% - 118px);top:0}
+.bath-body .pet-art{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;overflow:visible}
+.wash-zone{position:absolute;width:58px;height:58px;transform:translate(-50%,-50%);border:2px dashed #fffcebcc;border-radius:50%;background:#ffffff15;display:grid;place-items:center;z-index:4;padding:0}
+.wash-zone span{font-size:28px;line-height:1;pointer-events:none}.wash-zone:active{transform:translate(-50%,-50%) scale(.95)}.wash-zone.washed{background:#dcecd2b0;border-color:#8bb184;border-style:solid;color:#729367}.wash-zone.washed span{font-size:23px}
+.wash-zone:disabled:not(.washed){opacity:.3}.wash-zone:not(:disabled){animation:wash-glow 2s ease-in-out infinite}
+.zone-0{left:50%;top:37%}.zone-1{left:24%;top:67%}.zone-2{left:76%;top:67%}.zone-3{left:50%;top:73%}
+.bath-body:has(.age-2) .zone-0{top:30%}.bath-body:has(.age-3) .zone-0{top:26%}
+.coat-layer{position:absolute;inset:0;pointer-events:none;z-index:3}.coat{position:absolute;transform:translate(-50%,-50%);font-size:48px;line-height:1;filter:drop-shadow(0 2px 2px #fff9e5)}
+.bath-tool-display{position:absolute;right:17px;bottom:13px;font-size:35px;transform:rotate(-12deg);pointer-events:none}
+.wash-progress{font-size:13px;color:#7b9b87;min-height:22px}.bath-steps{margin-top:14px}.bath-step:disabled.complete{opacity:1}
+.growth-comparison{display:flex;align-items:center;justify-content:center;gap:20px;margin:15px 0}.growth-comparison>div{flex:1;max-width:190px}.growth-comparison .pet-art{width:100%;height:150px;overflow:visible}.growth-comparison small{display:block;font-size:12px;color:#94836e;margin-top:8px}.growth-comparison>span{font-size:29px;color:#b49f75}.growth-comparison .after-pet .pet-art{height:175px}
+.stage-skill{font-size:11px;color:#968571;line-height:1.5;margin:12px 0}
+@keyframes local-bounce{0%,100%{transform:translateY(0)}40%{transform:translateY(-14px) rotate(-3deg)}70%{transform:translateY(-6px) rotate(3deg)}}
+@keyframes local-wiggle{0%,100%{rotate:0deg}25%{rotate:-5deg}75%{rotate:5deg}}
+@keyframes local-nibble{50%{transform:scale(1.025,.97)}}@keyframes local-breathe{50%{transform:scale(1.025)}}
+@keyframes body-breathe{50%{scale:1.025 1.015}}@keyframes tail-wave{0%,30%,70%,100%{rotate:0deg}40%,60%{rotate:5deg}50%{rotate:-4deg}}
+@keyframes walk-bob{0%,100%{translate:0 0}50%{translate:0 -4px}}@keyframes step-left{0%,100%{translate:0 0;rotate:-4deg}50%{translate:0 -7px;rotate:5deg}}
+@keyframes stretch-body{0%,100%{scale:1 1}50%{scale:1.12 .87}}@keyframes stretch-arms{0%,100%{scale:1 1}50%{scale:1.23 1.07}}
+@keyframes look-around{0%,100%{rotate:0deg}30%{rotate:-7deg}70%{rotate:6deg}}@keyframes sniff{50%{translate:3px 2px;rotate:2deg}}
+@keyframes yawn{0%,25%,60%,100%{scale:1 .3}40%,50%{scale:1 1}}@keyframes chew{50%{scale:.8 1.4}}
+@keyframes target-glow{50%{box-shadow:0 0 0 6px #fff7d822}}@keyframes wash-glow{50%{border-color:#86ad90;background:#fffcef44}}
+@keyframes bite-flight{0%{transform:translateY(0) scale(1);opacity:1}80%{opacity:1}100%{transform:translateY(-130px) scale(.35);opacity:0}}
+@media(max-width:1050px){.pet-position.stage-0{width:23%}.pet-position{width:26%}.pet-position.stage-3{width:30%}}
+@media(max-width:800px){.pet-position.stage-0{width:20%}.pet-position{width:23%}.pet-position.stage-3{width:28%}}
+@media(max-width:540px){.pet-position.stage-0{width:32%}.pet-position{width:36%}.pet-position.stage-2{width:39%}.pet-position.stage-3{width:42%}.feeding-stage{height:285px;margin:18px 0 13px}.feeding-pet{top:5px}.mouth-target{top:133px}.feeding-stage:has(.age-1) .mouth-target{top:120px}.feeding-stage:has(.age-2) .mouth-target{top:98px}.feeding-stage:has(.age-3) .mouth-target{top:86px}.bath-playground{height:285px}.bath-tool-display{right:10px;font-size:30px}.bath-step{min-height:76px}.bath-step span{font-size:25px}.wash-progress{font-size:12px}.growth-comparison{gap:8px}.growth-comparison .pet-art{height:120px}.growth-comparison .after-pet .pet-art{height:150px}}
+@media(prefers-reduced-motion:reduce){.pet-position{transition:none!important}}

@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#faf3e4">
+  <meta name="description" content="Elige una pequeña mascota, ponle nombre y acompáñala mientras crece. Un mundo con mascotas y escenarios 3D, cuidados y aventuras con mouse o pantalla táctil.">
+  <title>Mi Pequeña Mascota 3D · Un mundo de cariño</title>
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="Mascota 3D">
+  <script defer src="pwa.js"></script>
+  <link rel="icon" href="icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="living-pet.css">
+  <link rel="stylesheet" href="experience.css">
+  <link rel="stylesheet" href="adventures.css">
+  <link rel="stylesheet" href="world3d.css">
+  <script defer src="art.js"></script>
+  <script defer src="experience.js"></script>
+  <script defer src="adventure-model.js"></script>
+  <script defer src="model.js"></script>
+  <script defer src="care-sessions.js"></script>
+  <script defer src="adventures.js"></script>
+  <script type="module" src="boot3d.js"></script>
+</head>
+<body>
+  <div class="paper-dots" aria-hidden="true"></div>
+  <header class="topbar">
+    <a class="brand" href="./" aria-label="Mi Pequeña Mascota"><span class="brand-icon" id="brandIcon"></span><span>mi pequeña<strong>mascota<span class="brand-dot">✦</span></strong></span></a>
+    <div class="top-actions">
+      <button id="soundBtn" class="round-button" aria-label="Desactivar sonido" title="Sonido"></button>
+      <button id="pauseBtn" class="round-button" aria-label="Pausar" title="Pausa" hidden></button>
+      <button id="adultBtn" class="round-button adult-button" aria-label="Mantén pulsado para abrir ajustes de adultos" title="Adultos: mantén pulsado"><span id="adultIcon"></span><span class="hold-ring"></span></button>
+    </div>
+  </header>
+  <main id="app"></main>
+  <div id="overlayRoot"></div>
+  <div id="toast" role="status" aria-live="polite"></div>
+  <footer>Hecho para jugar despacito y cuidar con mucho cariño <span>♡</span></footer>
+<section class="install-panel" aria-label="Instalar el juego"><button id="installApp" type="button">📲 Instalar en el móvil</button><p id="offlineStatus" role="status"></p></section><dialog id="installHelp" aria-labelledby="installTitle"><h2 id="installTitle">Tu mascota en el móvil</h2><p id="installInstructions"></p><button id="closeInstall" type="button">Entendido</button></dialog>
+</body>
+</html>
+
